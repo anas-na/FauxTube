@@ -1,0 +1,8 @@
+const AboutPage = () => {
+    return (<section className="aboutPageContainer">
+        <h1>Youtube Clone Project</h1>
+        <p>Project description</p>
+    </section>)
+}
+
+export default AboutPage;
