@@ -13,7 +13,7 @@ const YoutubeAPICalls = () => {
     }
 
     useEffect(() => {
-        getYouTube();
+        // getYouTube();
     }, [])
 
     return (<section>
