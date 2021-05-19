@@ -1,0 +1,10 @@
+.NavContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.NavContainer img {
+    width: 120px;
+    height: 50px;
+}
