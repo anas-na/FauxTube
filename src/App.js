@@ -4,12 +4,14 @@ import NavBar from './Components/NavBar'
 import AboutPage from './Components/AboutPage'
 import HomePage from './Components/HomePage'
 import YoutubeAPICalls from './Components/YoutubeAPICalls';
+import Video from './Components/Video';
 
 function App() {
   return (
     <div className="App">
       <h1>Fauxtube</h1>
       <NavBar />
+      <Route path="/videos/:id" component={Video}/>
       <Route path="/AboutPage" component={AboutPage}/>
       <Route path="/HomePage" component={HomePage}/>
       <YoutubeAPICalls />
