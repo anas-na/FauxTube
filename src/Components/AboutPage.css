@@ -1,14 +1,15 @@
 .aboutPageContainer p{
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* border: 1px solid red;
-    border-radius: 2%; */
+    font-family: roboto;
 }
 .aboutPageContainer h3{
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* border: 1px solid red;
-    border-radius: 2%; */
+    font-family: roboto;
+}
+
+.aboutPageContainer h3:hover {
+    cursor: pointer;
+    color: red
 }
