@@ -9,12 +9,10 @@ import Video from './Components/Video';
 function App() {
   return (
     <div className="App">
-      <h1>Fauxtube</h1>
       <NavBar />
       <Route path="/videos/:id" component={Video}/>
       <Route path="/AboutPage" component={AboutPage}/>
-      <Route path="/HomePage" component={HomePage}/>
-      <YoutubeAPICalls />
+      <Route exact path="/" component={HomePage}/>
     </div>
   );
 }
