@@ -36,7 +36,7 @@ const AboutPage = () => {
         <button onClick={handleClick}>{showBio ? "Shoaib Dar" : "Shoaib Dar"}</button>
         {showBio ? (
             <div>
-                <p>bio</p>
+                <p>I’m a analytical Full Stack Developer who loves to solve problems and puzzles. I enjoy traveling, reading and learning about the world we live in.</p>
                 <a href="https://github.com/SDAR30" target='_blank'>GitHub</a>
                 
             </div>
