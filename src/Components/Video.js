@@ -1,5 +1,6 @@
 import { useState } from "react";
 import './Video.css'
+import moment from 'moment';
 
 const Video = (props) =>{
     const [userName, setUserName] = useState('');
@@ -18,7 +19,8 @@ const Video = (props) =>{
         setUserName('');
         setComment('');
     }
-
+    let day = new Date()
+    let newDay = moment(day).format('YYYY/MM/DD').toLocaleString()
     return (
         <section>
             <br/>
@@ -40,8 +42,9 @@ const Video = (props) =>{
             </form>
             {commentList.map(commentObj => {
                 return (<div className='commentContainer'>
-                    <h3>{Object.keys(commentObj)}</h3>
-                    <p>{Object.values(commentObj)}</p>
+                    <h3 className='name'>{Object.keys(commentObj)}(<span>{newDay}</span>):</h3>
+                    
+                    <p className='comment'> {Object.values(commentObj)}</p>
                 </div>)
             })}
         </section>
