@@ -1,6 +1,6 @@
 import axios from "axios"
 import {Link} from "react-router-dom"
-import { useEffect, useState } from "react"
+import {useState } from "react"
 
 
 
@@ -31,15 +31,12 @@ const HomePage = () => {
                 <button type='submit'>Search</button>
             </form>
             <ul>
-            {videos.map(video=><Link to={`/videos/${video.id.videoId}`}><li key={video.id.videoId}>
-                <img src={video.snippet.thumbnails.default.url}/>
+            {videos.map(video=><Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}><li >
+                <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title}/>
                 <h3>{video.snippet.title}</h3>
             </li></Link>)}
             </ul>
 
-            {/* {videos.map(video => <iframe width="420" height="315"
-            src={`https://www.youtube.com/embed/${video.id.videoId}`}>
-            </iframe>)} */}
         </div>
     )
 }
