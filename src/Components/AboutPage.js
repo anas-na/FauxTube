@@ -26,7 +26,7 @@ const AboutPage = () => {
         <h3 onClick={handleClick}>{showBio ? "Joshua Mendez" : "Joshua Mendez"}</h3>
         {showBio ? (
             <div>
-                <p>bio</p>
+                <p>I have had a passion for programming since a young age as an avid gamer. Hoping to use my skills I learn when trying to make mods when I was younger and now with formal learning with Pursuit aming for a career as a software developer</p>
                 <a href="https://github.com/joshuafmendez" target='_blank'>GitHub</a>
             </div>
         ) : (
