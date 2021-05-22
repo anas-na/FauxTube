@@ -24,7 +24,7 @@ const Video = (props) =>{
             <br/>
             <button onClick={props.history.goBack}>Go Back</button>
             <br/>
-            {<iframe width="420" height="315"
+            {<iframe title='youtubeVideo' width="420" height="315"
             src={`https://www.youtube.com/embed/${props.match.params.id}`}>
             </iframe>}
             <form onSubmit={handleSubmit}>

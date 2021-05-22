@@ -24,7 +24,7 @@ const AboutPage = () => {
         {showBio ? (
             <div>
                 <p>With a passion for Video Games and Music, I hope to use the skills i'm learning as a web developer to pursue a tech career in one of those fields.</p>
-                <a href="https://github.com/itsanasna" target='_blank'>GitHub</a>
+                <a href="https://github.com/itsanasna" target='_blank' rel="noreferrer">GitHub</a>
             </div>
         ) : (
             null
@@ -34,7 +34,7 @@ const AboutPage = () => {
         {showBio1 ? (
             <div>
                 <p>I have had a passion for programming since a young age as an avid gamer. Hoping to use my skills I learn when trying to make mods when I was younger and now with formal learning with Pursuit aming for a career as a software developer</p>
-                <a href="https://github.com/joshuafmendez" target='_blank'>GitHub</a>
+                <a href="https://github.com/joshuafmendez" target='_blank' rel="noreferrer">GitHub</a>
             </div>
         ) : (
             null
@@ -44,7 +44,7 @@ const AboutPage = () => {
         {showBio2 ? (
             <div>
                 <p>I’m a analytical Full Stack Developer who loves to solve problems and puzzles. I enjoy traveling, reading and learning about the world we live in.</p>
-                <a href="https://github.com/SDAR30" target='_blank'>GitHub</a>
+                <a href="https://github.com/SDAR30" target='_blank' rel="noreferrer">GitHub</a>
                 
             </div>
         ) : (
