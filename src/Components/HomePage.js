@@ -1,6 +1,7 @@
 import axios from "axios"
 import {Link} from "react-router-dom"
 import {useState } from "react"
+import "./HomePage.css"
 
 
 
@@ -24,20 +25,19 @@ const HomePage = () => {
     }
 
     return (
-        <div>
-            <h1>Search for Videos</h1>
-            <form onSubmit={handleSubmit}>
-                <input value={input} placeholder='search for video' onChange={handleChange}/>
-                <button type='submit'>Search</button>
+        <section>
+            <form className="search-form" onSubmit={handleSubmit}>
+                <input value={input} placeholder='search for video' onChange={handleChange} size="50"/>
+                <button type='submit' className="search-button">Search</button>
             </form>
-            <ul>
-            {videos.map(video=><Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}><li >
+            <ul className="videoList">
+            {videos.map(video=><Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}><li>
                 <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title}/>
                 <h3>{video.snippet.title}</h3>
             </li></Link>)}
             </ul>
 
-        </div>
+        </section>
     )
 }
 
