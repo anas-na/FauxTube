@@ -20,6 +20,7 @@ const AboutPage = () => {
         <h1>FauxTube</h1>
         <p>An application that allows you to search for videos on YouTube while using a simple custom user interface.</p>
         {/* Alphabetical Order */}
+        <h2 className='collabs'>The FauxTube Creators:</h2>
         <h3 onClick={handleClick}>{showBio ? "Anas Nahil" : "Anas Nahil"}</h3>
         {showBio ? (
             <div>

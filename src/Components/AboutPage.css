@@ -13,3 +13,10 @@
     cursor: pointer;
     color: red
 }
+h1{
+    font-size: 40px;
+    color: red;
+}
+.collabs {
+    text-decoration: underline;
+}
