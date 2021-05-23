@@ -11,6 +11,7 @@ const HomePage = (props) => {
             const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${input}&type=video&key=${process.env.REACT_APP_API_KEY}`);
             props.setSearch(res.config.url);
             setVideos(res.data.items);
+            console.log(res)
         } catch (error) {
             console.log(error)
         }
