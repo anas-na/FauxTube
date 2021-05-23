@@ -7,7 +7,7 @@ const HomePage = (props) => {
     const [videos, setVideos] = useState([]);
     const [input, setInput] = useState('');
     const [order, setOrder] = useState("");
-    
+    const [searchedState, setSearchedState] = useState(0);
     
 
     const getYouTube = async (selectedOrder) => {
@@ -43,6 +43,7 @@ const HomePage = (props) => {
         setOrder(e.target.value)
         if (e.target.value && input) {
             getYouTube(e.target.value);
+            setSearchedState(2)
         }
     };
 
@@ -50,8 +51,10 @@ const HomePage = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (input === "") {
+            setSearchedState(1)
             return
         }
+        setSearchedState(2)
         getYouTube(order);
     }
 
@@ -77,6 +80,8 @@ const HomePage = (props) => {
                 </select>
 
             </form>
+
+            {(searchedState === 1)  && <h2>No Search Results Yet! Please submit a search above.</h2>}
 
             <ul className="videoList">
                 {videos.map(video => <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}><li>
