@@ -9,3 +9,7 @@
     width: 120px;
     height: 50px;
 }
+
+.NavContainer h2 {
+    color: rgb(136, 0, 0);
+}
