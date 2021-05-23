@@ -1,32 +1,62 @@
 import axios from "axios"
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./HomePage.css"
 
-const HomePage = () => {
+const HomePage = (props) => {
     const [videos, setVideos] = useState([]);
     const [input, setInput] = useState('');
     const [order, setOrder] = useState("");
+    const [searchedState, setSearchedState] = useState(0);
+    
 
-    const getYouTube = async () => {
+    const getYouTube = async (selectedOrder) => {
+        
+        let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${input}&type=video&key=${process.env.REACT_APP_API_KEY}`
+        if (selectedOrder) {
+            url = url.slice(0, 45) + "order=" + selectedOrder + "&" + url.slice(45, 140)
+        }
         try {
-            const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${input}&type=video&key=${process.env.REACT_APP_API_KEY}`);
-            setVideos(res.data.items)
+            const res = await axios.get(url);
+            props.setSearch(res.config.url);
+            setVideos(res.data.items);
+            console.log(res)
         } catch (error) {
             console.log(error)
         }
     }
 
-    const selectOrder = async (e) => {
-        const order = e.target.value;
-        const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?order=${order}&part=snippet&maxResults=20&q=${input}&type=video&key=${process.env.REACT_APP_API_KEY}`);
-        setVideos(res.data.items)
+    useEffect(() => {
+        const reload = async () => {
+            if (props.search) {
+                try {
+                    const res = await axios.get(`${props.search}`);
+                    setVideos(res.data.items);
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        }
+        reload();
+    }, [props.search])
+
+    const selectOrder = (e) => {
+        setOrder(e.target.value)
+        if (e.target.value && input) {
+            getYouTube(e.target.value);
+            setSearchedState(2)
+        }
     };
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        getYouTube();
+        if (input === "") {
+            setSearchedState(1)
+            return
+        }
+        setSearchedState(2)
+        getYouTube(order);
     }
 
     const handleChange = (e) => {
@@ -51,6 +81,8 @@ const HomePage = () => {
                 </select>
 
             </form>
+
+            {(searchedState === 1)  && <h2 className="search-error">No Search Results Yet! Please submit a search above.</h2>}
 
             <ul className="videoList">
                 {videos.map(video => <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}><li>

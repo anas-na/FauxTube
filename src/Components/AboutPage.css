@@ -1,22 +1,115 @@
-.aboutPageContainer p{
-    display: flex;
-    flex-direction: column;
-    font-family: roboto;
-}
-.aboutPageContainer h3{
-    display: flex;
-    flex-direction: column;
-    font-family: roboto;
-}
 
 .aboutPageContainer h3:hover {
     cursor: pointer;
     color: red
 }
 h1{
-    font-size: 40px;
-    color: red;
+    color: black;
+    border-radius:5px;
+    font-family: roboto;
+    font-size: 70px;
+    letter-spacing: 2px;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
 }
-.collabs {
-    text-decoration: underline;
+
+.BioSection {
+    display: grid;
+    grid-template-columns: 260px 240px; 
+    gap: 10%;
 }
+
+.BioSection p, 
+.BioSection a {
+    grid-column: 2/3;
+}
+
+
+.CollabImage {
+    border-radius: 5px;
+	box-shadow: 0 4px 6px 0 rgba(34, 60, 80, .16);
+	transition: all ease-in-out .2s;
+}
+
+.CollabImage:hover {
+    filter: brightness(.75);
+	box-shadow: 0 8px 12px 0 rgba(34, 60, 80, .16);
+}
+
+.bioImage-wrapper {
+    justify-self: center;
+	padding: 4%;
+	position: relative;
+}
+
+.GitHub {
+    position: absolute;
+    visibility: visible;
+	top: 80%;
+	left: 80%;
+	transform: translate(-50%, -50%);
+	color: white;
+	z-index: 2;
+	transition: all ease-in-out .2s;
+}
+.linkedIn {
+    position: absolute;
+    visibility: visible;
+	top: 90%;
+	left: 80%;
+	transform: translate(-50%, -50%);
+	color: white;
+	z-index: 2;
+	transition: all ease-in-out .2s;
+}
+
+.aboutPageContainer > h2 {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  font-family: roboto;
+  font-weight: 300;
+  font-size: 40px;
+  color: black;
+  -webkit-transition: all 0.4s ease 0s;
+  -o-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+  .aboutPageContainer > h2:before {
+    width: 50px;
+    height: 6px;
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    margin-left: -14px;
+    background-color: #b80000;
+  }
+  .aboutPageContainer > h2:after {
+    width: 200px;
+    height: 2px;
+    display: block;
+    content: "";
+    position: relative;
+    margin-top: 25px;
+    left: 50%;
+    margin-left: -80px;
+    background-color: black;
+  }
