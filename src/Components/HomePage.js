@@ -3,8 +3,6 @@ import { Link } from "react-router-dom"
 import { useState } from "react"
 import "./HomePage.css"
 
-
-
 const HomePage = () => {
     const [videos, setVideos] = useState([]);
     const [input, setInput] = useState('');
@@ -15,7 +13,7 @@ const HomePage = () => {
             const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${input}&type=video&key=${process.env.REACT_APP_API_KEY}`);
             setVideos(res.data.items)
         } catch (error) {
-            console.log(error + " >> KEY USED: " + process.env.REACT_APP_API_KEY)
+            console.log(error)
         }
     }
 
@@ -54,8 +52,6 @@ const HomePage = () => {
 
             </form>
 
-
-
             <ul className="videoList">
                 {videos.map(video => <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}><li>
                     <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
@@ -67,4 +63,4 @@ const HomePage = () => {
     )
 }
 
-export default HomePage
+export default HomePage;

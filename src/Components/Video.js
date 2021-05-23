@@ -32,16 +32,16 @@ const Video = (props) =>{
             <form onSubmit={handleSubmit}>
                 <label>
                     Name:
-                    <input type='text' value={userName} onChange={handleUserName}/>
+                    <input type='text' value={userName} onChange={handleUserName} required/>
                 </label>
                 <label>
                     Comment:
-                    <textarea value={comment} onChange={handleComment}></textarea>
+                    <textarea rows="4" cols="40" value={comment} onChange={handleComment} required></textarea>
                 </label>
                 <button type='submit'>Submit</button>
             </form>
             {commentList.map(commentObj => {
-                return (<div className='commentContainer'>
+                return (<div key={props.match.params.id} className='commentContainer'>
                     <h3 className='name'>{Object.keys(commentObj)}(<span>{newDay}</span>):</h3>
                     
                     <p className='comment'> {Object.values(commentObj)}</p>
