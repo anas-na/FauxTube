@@ -16,14 +16,12 @@ const HomePage = (props) => {
         }
     }
 
-    // const {setSearch} = props;
     useEffect(()=>{
         const reload = async () => {
             if(props.search){
                 try {
                     const res = await axios.get(`${props.search}`);
                     setVideos(res.data.items);
-                    // setSearch('');
                 } catch (error) {
                     console.log(error)
                 }
