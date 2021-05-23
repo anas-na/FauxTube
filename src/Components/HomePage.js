@@ -6,25 +6,38 @@ import "./HomePage.css"
 const HomePage = () => {
     const [videos, setVideos] = useState([]);
     const [input, setInput] = useState('');
+    const [order, setOrder] = useState('');
 
-    const getYouTube = async () => {
+    const getYouTube = () => {
+
+        let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${input}&type=video&key=${process.env.REACT_APP_API_KEY}`
+        if (order) {
+            url = url.slice(0, 45) + "order=" + order + "&" + url.slice(45, 140)
+            debugger
+        }
+
         try {
-            const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${input}&type=video&key=${process.env.REACT_APP_API_KEY}`);
-            setVideos(res.data.items)
+            debugger
+            // const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${input}&type=video&key=${process.env.REACT_APP_API_KEY}`);
+            // setVideos(res.data.items)
         } catch (error) {
             console.log(error)
         }
     }
 
     const selectOrder = async (e) => {
-        const order = e.target.value;
-        const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?order=${order}&part=snippet&maxResults=20&q=${input}&type=video&key=${process.env.REACT_APP_API_KEY}`);
-        setVideos(res.data.items)
+        setOrder(e.target.value);
+        if (order && input) {
+            getYouTube();
+        }
     };
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if(input === ""){
+            return
+        }
         getYouTube();
     }
 
