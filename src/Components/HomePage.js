@@ -1,20 +1,34 @@
 import axios from "axios"
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import "./HomePage.css"
 
-const HomePage = () => {
+const HomePage = (props) => {
     const [videos, setVideos] = useState([]);
     const [input, setInput] = useState('');
-
     const getYouTube = async () => {
-        try {
-            const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${input}&type=video&key=${process.env.REACT_APP_API_KEY}`);
-            setVideos(res.data.items)
-        } catch (error) {
-            console.log(error)
+        if(!props.search){
+            try {
+                const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${input}&type=video&key=${process.env.REACT_APP_API_KEY}`);
+                props.setSearch(res.config.url);
+                setVideos(res.data.items);
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
+
+    useEffect(()=>{
+        const reload = async () => {
+            try {
+                const res = await axios.get(`${props.search}`);
+                setVideos(res.data.items);
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        reload();
+    },[props.search])
 
     const selectOrder = async (e) => {
         const order = e.target.value;
