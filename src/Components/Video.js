@@ -1,5 +1,6 @@
 import { useState } from "react";
 import './Video.css'
+import './HomePage.css'
 import moment from 'moment';
 
 const Video = (props) =>{
@@ -24,7 +25,7 @@ const Video = (props) =>{
     return (
         <section>
             <br/>
-            <button onClick={props.history.goBack}>Go Back</button>
+            <button onClick={props.history.goBack} className="search-button">Go Back</button>
             <br/>
             {<iframe title='youtubeVideo' width="420" height="315"
             src={`https://www.youtube.com/embed/${props.match.params.id}`}>
@@ -38,7 +39,7 @@ const Video = (props) =>{
                     Comment:
                     <textarea rows="4" cols="40" value={comment} onChange={handleComment} required></textarea>
                 </label>
-                <button type='submit'>Submit</button>
+                <button type='submit' className='search-button'>Submit</button>
             </form>
             {commentList.map(commentObj => {
                 return (<div key={props.match.params.id} className='commentContainer'>
