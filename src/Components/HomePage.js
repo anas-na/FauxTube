@@ -6,9 +6,18 @@ import "./HomePage.css"
 const HomePage = (props) => {
     const [videos, setVideos] = useState([]);
     const [input, setInput] = useState('');
-    const getYouTube = async () => {
+    const [order, setOrder] = useState("");
+    
+    
+
+    const getYouTube = async (selectedOrder) => {
+        
+        let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${input}&type=video&key=${process.env.REACT_APP_API_KEY}`
+        if (selectedOrder) {
+            url = url.slice(0, 45) + "order=" + selectedOrder + "&" + url.slice(45, 140)
+        }
         try {
-            const res = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${input}&type=video&key=${process.env.REACT_APP_API_KEY}`);
+            const res = await axios.get(url);
             props.setSearch(res.config.url);
             setVideos(res.data.items);
         } catch (error) {
@@ -16,9 +25,9 @@ const HomePage = (props) => {
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         const reload = async () => {
-            if(props.search){
+            if (props.search) {
                 try {
                     const res = await axios.get(`${props.search}`);
                     setVideos(res.data.items);
@@ -28,22 +37,22 @@ const HomePage = (props) => {
             }
         }
         reload();
-    },[props.search])
+    }, [props.search])
 
-    const selectOrder = async (e) => {
-        setOrder(e.target.value);
-        if (order && input) {
-            getYouTube();
+    const selectOrder = (e) => {
+        setOrder(e.target.value)
+        if (e.target.value && input) {
+            getYouTube(e.target.value);
         }
     };
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(input === ""){
+        if (input === "") {
             return
         }
-        getYouTube();
+        getYouTube(order);
     }
 
     const handleChange = (e) => {
