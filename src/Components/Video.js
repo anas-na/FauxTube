@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './Video.css'
 import './HomePage.css'
 import moment from 'moment';
@@ -20,6 +20,18 @@ const Video = (props) =>{
         setUserName('');
         setComment('');
     }
+
+    useEffect(()=> {
+        const cmts = localStorage.getItem('cmts')
+
+        if(cmts){
+            setCommentList(JSON.parse(cmts))
+        }
+    },[]);
+
+    useEffect(()=> {
+        localStorage.setItem('cmts', JSON.stringify(commentList))
+    })
     let day = new Date()
     let newDay = moment(day).format('YYYY/MM/DD').toLocaleString()
     return (
