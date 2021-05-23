@@ -81,7 +81,7 @@ const HomePage = (props) => {
 
             </form>
 
-            {(searchedState === 1)  && <h2>No Search Results Yet! Please submit a search above.</h2>}
+            {(searchedState === 1)  && <h2 className="search-error">No Search Results Yet! Please submit a search above.</h2>}
 
             <ul className="videoList">
                 {videos.map(video => <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}><li>

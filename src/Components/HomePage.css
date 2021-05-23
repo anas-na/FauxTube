@@ -60,4 +60,9 @@ a{
 	background:linear-gradient(to bottom, #dd6565 5%, #ff2f00 100%);
 }
 
+.search-error {
+    border: 2px solid rgb(0, 0, 0);
+    padding: 10px;
+  border-radius: 5px;
+}
        
