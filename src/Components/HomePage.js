@@ -86,7 +86,7 @@ const HomePage = (props) => {
 
             <ul className="videoList">
                 {videos.map(video => <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}><li>
-                    <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
+                    <img className="video-thumbnail" src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
                     <h3>{video.snippet.title}</h3>
                 </li></Link>)}
             </ul>
