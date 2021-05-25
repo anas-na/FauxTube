@@ -38,7 +38,7 @@ a{
     font-size: 20px;
 }
 
-.search-button {
+.red-button {
 	box-shadow:inset 0px 1px 0px 0px #cf866c;
 	background:linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
 	background-color: red;
@@ -52,11 +52,11 @@ a{
 	padding:10px 10px 10px 10px;
 	text-decoration:none;
 }
-.search-button:hover {
+.red-button:hover {
 	background:linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
 	background-color:red;
 }
-.search-button:active {
+.red-button:active {
 	background:linear-gradient(to bottom, #dd6565 5%, #ff2f00 100%);
 }
 

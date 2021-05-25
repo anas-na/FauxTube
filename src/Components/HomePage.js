@@ -69,7 +69,7 @@ const HomePage = (props) => {
             <form className="search-form" onSubmit={handleSubmit}>
 
                 <input value={input} placeholder='search for video' onChange={handleChange} size="50" />
-                <button type='submit' className="search-button">Search</button>
+                <button type='submit' className="red-button search-button">Search</button>
 
                 <select className="order-list" defaultValue={''} onChange={selectOrder}>
                     <option value="">Select Order</option>
