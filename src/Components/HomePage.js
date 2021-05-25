@@ -20,6 +20,7 @@ const HomePage = (props) => {
             const res = await axios.get(url);
             props.setSearch(res.config.url);
             setVideos(res.data.items);
+            debugger
             console.log(res)
         } catch (error) {
             console.log(error)
