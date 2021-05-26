@@ -8,10 +8,10 @@ const HomePage = (props) => {
     const [input, setInput] = useState('');
     const [order, setOrder] = useState("");
     const [searchedState, setSearchedState] = useState(0);
-    
+
 
     const getYouTube = async (selectedOrder) => {
-        
+
         let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${input}&type=video&key=${process.env.REACT_APP_API_KEY}`
         if (selectedOrder) {
             url = url.slice(0, 45) + "order=" + selectedOrder + "&" + url.slice(45, 140)
@@ -20,6 +20,7 @@ const HomePage = (props) => {
             const res = await axios.get(url);
             props.setSearch(res.config.url);
             setVideos(res.data.items);
+            debugger
             console.log(res)
         } catch (error) {
             console.log(error)
@@ -63,6 +64,16 @@ const HomePage = (props) => {
         setInput(e.target.value);
     }
 
+    const decodeHTMLEntities = (text) => {
+        let entities = [['amp', '&'], ['apos', '\''], ['#x27', '\''], ['#x2F', '/'], ['#39', '\''], ['#47', '/'],
+        ['lt', '<'], ['gt', '>'], ['nbsp', ' '], ['quot', '"']];
+
+        for (let i = 0, max = entities.length; i < max; ++i)
+            text = text.replace(new RegExp('&' + entities[i][0] + ';', 'g'), entities[i][1]);
+
+        return text;
+    }
+
     return (
         <section>
 
@@ -82,12 +93,12 @@ const HomePage = (props) => {
 
             </form>
 
-            {(searchedState === 1)  && <h2 className="search-error">No Search Results Yet! Please submit a search above.</h2>}
+            {(searchedState === 1) && <h2 className="search-error">No Search Results Yet! Please submit a search above.</h2>}
 
             <ul className="videoList">
                 {videos.map(video => <Link to={`/videos/${video.id.videoId}`} key={video.id.videoId}><li>
                     <img className="video-thumbnail" src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
-                    <h3>{video.snippet.title}</h3>
+                    <h3>{decodeHTMLEntities(video.snippet.title)}</h3>
                 </li></Link>)}
             </ul>
 
