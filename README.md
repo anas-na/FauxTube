@@ -1,4 +1,4 @@
-###### FauxTube
+# FauxTube
 
 a Youtube clone web application using React and Bootstrap.
 
